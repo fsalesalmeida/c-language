@@ -16,14 +16,14 @@ int retornar_soma(int x, int y);
 int retornar_multiplica(int x, int y);
 
 int retornar_multiplica(int x, int y){
-int menor, maior, i, multiplica=1;
+    int menor, maior, i, multiplica=1;
     if(x < y){
-    menor = x;
-    maior = y;
+        menor = x;
+        maior = y;
     }
     else{
-    menor = y;
-    maior = x;
+        menor = y;
+        maior = x;
     }
 
     x = menor;
@@ -31,7 +31,6 @@ int menor, maior, i, multiplica=1;
     i = x;
 
     while(i >= x && i <= y){
-
         multiplica = multiplica * i;
         i++;
     }
@@ -41,13 +40,14 @@ int menor, maior, i, multiplica=1;
 
 int retornar_soma(int x, int y){
     int menor, maior, i, soma=0;
+
     if(x < y){
-    menor = x;
-    maior = y;
+        menor = x;
+        maior = y;
     }
     else{
-    menor = y;
-    maior = x;
+        menor = y;
+        maior = x;
     }
 
     x = menor;
@@ -157,65 +157,63 @@ float divide(int x,int y);
 
 main()
 {
-int a,b,c;
-float d, e;
+    int a,b,c;
+    float d, e;
 
-printf("Digite valor de A\n");
-scanf("%d", &a);
+    printf("Digite valor de A\n");
+    scanf("%d", &a);
 
-printf("\nDigite valor de B\n");
-scanf("%d", &b);
+    printf("\nDigite valor de B\n");
+    scanf("%d", &b);
 
-printf("\n=======chamando as funcoes===== \n");
+    printf("\n=======chamando as funcoes===== \n");
 
-c = soma(a,b);
+    c = soma(a,b);
 
-printf("soma de a + b e': %d + %d = %d \n",a,b,c);
+    printf("soma de a + b e': %d + %d = %d \n",a,b,c);
 
-c = subtrai(a,b);
+    c = subtrai(a,b);
 
-printf("subtracao de a - b e': %d - %d = %d \n",a,b,c);
+    printf("subtracao de a - b e': %d - %d = %d \n",a,b,c);
 
-c = multiplica(a,b);
+    c = multiplica(a,b);
 
-printf("multiplicacao de a * b e': %d * %d = %d \n",a,b,c);
+    printf("multiplicacao de a * b e': %d * %d = %d \n",a,b,c);
 
-c = divide(a,b);
+    c = divide(a,b);
 
-printf("divisao de a / b e': %d / %d = %d \n",a,b,c);
-
+    printf("divisao de a / b e': %d / %d = %d \n",a,b,c);
 
 }
 
-
 int soma(int x,int y)
 {
-int z;
-z = x + y;
+    int z;
+    z = x + y;
 
-return(z);
+    return(z);
 }
 
 int subtrai(int x,int y)
 {
-int z;
-z = x - y;
+    int z;
+    z = x - y;
 
-return(z);
+    return(z);
 }
 
 int multiplica(int x,int y)
 {
-int z;
-z = x * y;
+    int z;
+    z = x * y;
 
-return(z);
+    return(z);
 }
 
 float divide(int x,int y)
 {
-float z;
-z = x / y;
+    float z;
+    z = x / y;
 
 return(z);
 }
@@ -239,59 +237,60 @@ double divide(int x[], int n);
 
 main()
 {
-int c,i=0, n=0, opc;
+    int c,i=0, n=0, opc;
 
-printf("Digite a quantidade de valores a ser calculado\n");
-scanf("%d", &n);
+    printf("Digite a quantidade de valores a ser calculado\n");
+    scanf("%d", &n);
 
-int a[n];
+    int a[n];
 
-printf("\nDigite os valores para calculo\n");
-for(i=0; i<n; i++)
-scanf("%d", &a[i]);
+    printf("\nDigite os valores para calculo\n");
+    for(i=0; i<n; i++)
+        scanf("%d", &a[i]);
 
-printf("\nDigite o valor 1 para soma\n");
-printf("\nDigite o valor 2 para subtracao\n");
-printf("\nDigite o valor 3 para multiplicacao\n");
-printf("\nDigite o valor 4 para divisao\n");
-scanf("%d", &opc);
+    printf("\nDigite o valor 1 para soma\n");
+    printf("\nDigite o valor 2 para subtracao\n");
+    printf("\nDigite o valor 3 para multiplicacao\n");
+    printf("\nDigite o valor 4 para divisao\n");
+    scanf("%d", &opc);
 
-printf("\n=======chamando as funcoes===== \n");
+    printf("\n=======chamando as funcoes===== \n");
 
-switch(opc){
+    switch(opc){
 
-case 1:{
+    case 1:{
 
-c = soma(a,n);
+        c = soma(a,n);
 
-printf("\nSoma dos termos = %d\n", c);
-    break;
-};
+        printf("\nSoma dos termos = %d\n", c);
+        break;
+    };
 
     case 2:{
 
-    c = subtrai(a, n);
+        c = subtrai(a, n);
 
-    printf("\nSubtracao dos termos = %d\n", c);
-    break;
+        printf("\nSubtracao dos termos = %d\n", c);
+        break;
     };
 
-case 3:{
+    case 3:{
 
-c = multiplica(a, n);
+        c = multiplica(a, n);
 
-printf("\nMultiplicacao dos termos = %d\n", c);
-    break;
-};
-case 4:{
+        printf("\nMultiplicacao dos termos = %d\n", c);
+        break;
+    };
+    case 4:{
 
-c = divide(a,n);
-printf("\nDivisao dos termos = %.1lf", c);
-    break;
-};
-default: printf("Valor invalido");
-}
-return 0;
+        c = divide(a,n);
+        printf("\nDivisao dos termos = %.1lf", c);
+        break;
+    };
+    default: printf("Valor invalido");
+    }
+
+    return 0;
 }
 
 int soma(int x[], int n)
@@ -299,33 +298,33 @@ int soma(int x[], int n)
     int res = 0, i;
     for (i = 0; i < n; i++)
         res = res+x[i];
-            return(res);
+    return(res);
 }
 
 int subtrai(int x[], int n)
 {
- int res = x[0], i;
+    int res = x[0], i;
 
     for (i = 0; i < n; i++)
         printf("%d\n", x[i]);
         res = x[i] - res;
-            return(res);
+    return(res);
 }
 
 int multiplica(int x[], int n)
 {
-int res = 0, i;
+    int res = 0, i;
     for (i = 0; i < n; i++)
         res = soma(x,n)*soma(x,n);
-            return(res);
+    return(res);
 }
 
 double divide(int x[], int n)
 {
-double res = 0, i;
+    double res = 0, i;
     for (i = 0; i < n; i++)
         res = (subtrai(x,n))/(soma(x,n));
-            return(res);
+    return(res);
 }
 #endif // ex4
 
@@ -382,7 +381,7 @@ int main(){
     res = fatorial(n);
     res1 = somaDigitos(res);
 
-printf(" O fatorial de %d eh %d e a soma de seus algarismos eh %d", n, res, res1);
+    printf(" O fatorial de %d eh %d e a soma de seus algarismos eh %d", n, res, res1);
 
     return 0;
 }
