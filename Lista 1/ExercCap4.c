@@ -29,12 +29,12 @@ int main(){
 
     }
 
-        for(i=0; i<9; i++)
-            printf("Vetor ordem impar %d\n ", j[i]);
-        for(i=0; i<9; i++)
-            printf("Vetor ordem par %d \n", s[i]);
+    for(i=0; i<9; i++)
+        printf("Vetor ordem impar %d\n ", j[i]);
+    for(i=0; i<9; i++)
+        printf("Vetor ordem par %d \n", s[i]);
 
-            return 0;
+    return 0;
 }
 #endif // ex1
 
@@ -113,20 +113,19 @@ int main(){
     for (i=0;i<10; i++)
     for(x=i+1;x<10;x++)
         if (a[i]>a[x]){
-    {
+        {
             y=a[i];
             a[i]=a[x];
             a[x]=y;
-                            }
-
         }
-        printf("Vetor em ordem crescente: \n");
-        for(i=0;i<10;i++)
+
+    }
+    printf("Vetor em ordem crescente: \n");
+    for(i=0;i<10;i++)
         printf(" %d",a[i]);
 
-
-            return 0;
-    }
+    return 0;
+}
 #endif // ex3
 
 /*
@@ -136,7 +135,7 @@ int main(){
     e guarde o resultado num 3. vetor. Imprima na tela o indice, os valores e
     o resultado dos 6 elementos dos vetores.
 */
-// ESTÁ COM MULTIPLICACAO, TEM QUE ALTERAR
+
 #ifdef ex4
 int tabelax [2] [3];
 int tabelay [2] [3];
@@ -146,57 +145,53 @@ int i, x;
 main()
 {
 
-for (i=0; i<=2; i++){
-    printf(" Insira linha 1 coluna %d da tabela x ->\t", i);
-    scanf("%d",&tabelax[0] [i]);}
+    for (i=0; i<=2; i++){
+        printf(" Insira linha 1 coluna %d da tabela x ->\t", i);
+        scanf("%d",&tabelax[0] [i]);}
 
-for (i=0; i<=2; i++){
+    for (i=0; i<=2; i++){
         x=1;
-    printf(" Insira linha 2 coluna %d da tabela x ->\t", i);
-    scanf("%d",&tabelax[x] [i]);}
+        printf(" Insira linha 2 coluna %d da tabela x ->\t", i);
+        scanf("%d",&tabelax[x] [i]);}
 
-printf(" valor da linha 1 coluna 1-> %d\n",tabelax[0] [0]);
-printf(" valor da linha 1 coluna 2-> %d\n",tabelax[0] [1]);
-printf(" valor da linha 1 coluna 3-> %d\n",tabelax[0] [2]);
+    printf(" valor da linha 1 coluna 1-> %d\n",tabelax[0] [0]);
+    printf(" valor da linha 1 coluna 2-> %d\n",tabelax[0] [1]);
+    printf(" valor da linha 1 coluna 3-> %d\n",tabelax[0] [2]);
 
-printf(" valor da linha 2 coluna 1-> %d\n",tabelax[1] [0]);
-printf(" valor da linha 2 coluna 2-> %d\n",tabelax[1] [1]);
-printf(" valor da linha 2 coluna 3-> %d\n",tabelax[1] [2]);
+    printf(" valor da linha 2 coluna 1-> %d\n",tabelax[1] [0]);
+    printf(" valor da linha 2 coluna 2-> %d\n",tabelax[1] [1]);
+    printf(" valor da linha 2 coluna 3-> %d\n",tabelax[1] [2]);
 
-for (i=0; i<=2; i++){
-    printf(" Insira linha 1 coluna %d da tabela y ->\t", i);
-    scanf("%d",&tabelay[0] [i]);}
+    for (i=0; i<=2; i++){
+        printf(" Insira linha 1 coluna %d da tabela y ->\t", i);
+        scanf("%d",&tabelay[0] [i]);}
 
-for (i=0; i<=2; i++){
+    for (i=0; i<=2; i++){
         x=1;
-    printf(" Insira linha 2 coluna %d da tabela y ->\t", i);
-    scanf("%d",&tabelay[x] [i]);}
+        printf(" Insira linha 2 coluna %d da tabela y ->\t", i);
+        scanf("%d",&tabelay[x] [i]);}
 
-printf(" valor da linha 1 coluna 1-> %d\n",tabelay[0] [0]);
-printf(" valor da linha 1 coluna 2-> %d\n",tabelay[0] [1]);
-printf(" valor da linha 1 coluna 3-> %d\n",tabelay[0] [2]);
+    printf(" valor da linha 1 coluna 1-> %d\n",tabelay[0] [0]);
+    printf(" valor da linha 1 coluna 2-> %d\n",tabelay[0] [1]);
+    printf(" valor da linha 1 coluna 3-> %d\n",tabelay[0] [2]);
 
-printf(" valor da linha 2 coluna 1-> %d\n",tabelay[1] [0]);
-printf(" valor da linha 2 coluna 2-> %d\n",tabelay[1] [1]);
-printf(" valor da linha 2 coluna 3-> %d\n",tabelay[1] [2]);
+    printf(" valor da linha 2 coluna 1-> %d\n",tabelay[1] [0]);
+    printf(" valor da linha 2 coluna 2-> %d\n",tabelay[1] [1]);
+    printf(" valor da linha 2 coluna 3-> %d\n",tabelay[1] [2]);
 
-for(i=0; i<=2; i++){
+    for(i=0; i<=2; i++){
         for(x=0; x<=1; x++){
-        resultado[x][i] = tabelax[x][i];
-        resultado[x][i] = resultado[x][i] * tabelay[x][i];
-                                                            }
-
+            resultado[x][i] = tabelax[x][i];
+            resultado[x][i] = resultado[x][i] - tabelay[x][i];
         }
-        printf("%d\n", resultado[0][0]);
-        printf("%d\n", resultado[0][1]);
-        printf("%d\n", resultado[0][2]);
-         printf("%d\n", resultado[1][0]);
-        printf("%d\n", resultado[1][1]);
-        printf("%d\n", resultado[1][2]);
 
-
-
-
+    }
+    printf("%d\n", resultado[0][0]);
+    printf("%d\n", resultado[0][1]);
+    printf("%d\n", resultado[0][2]);
+    printf("%d\n", resultado[1][0]);
+    printf("%d\n", resultado[1][1]);
+    printf("%d\n", resultado[1][2]);
 
 }
 #endif // ex4
