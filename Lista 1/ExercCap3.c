@@ -1,4 +1,4 @@
-#define ex1
+#define ex5
 #include "stdio.h"
 
 /*
@@ -75,7 +75,7 @@ int verifica(int x, int y){
     return res;
 }
 
- int main(){
+int main(){
     int a, b, res;
 
     printf("Digite dois numeros:\n");
@@ -104,12 +104,13 @@ int verifica(int x, int y){
 */
 
 #ifdef ex2
-int find_index(int a[], int num_elements, char valor);
+int find_index(char a[], int num_elements, char valor);
+int posicao;
 
 void main(void)
 {
-   int a[13] = {'b','d','f','h','j','k','m','o','q','s','u','w','y'};
-   int index;
+   char a[13] = {'b','d','f','h','j','k','m','o','q','s','u','w','y'};
+   char index;
    char valor;
 
    printf("\nDigite uma letra:\n");
@@ -122,18 +123,19 @@ void main(void)
    }
    else
    {
-	 printf("A letra %c foi encontrada em %d\n", valor, index);
+	 printf("A letra %c foi encontrada na posição %d\n", valor, posicao);
    }
 
 }
 
-int find_index(int a[], int num_elements, char valor)
+int find_index(char a[], int num_elements, char valor)
 {
    int i;
    for (i=0; i<num_elements; i++)
    {
 	 if (a[i] == valor)
 	 {
+        posicao = i;
 	    return(valor);
 	 }
    }
@@ -353,7 +355,7 @@ do
     // CONT = CONT + 1
     }
 while(CONT <= x);
-printf("Resultado: %d", FAT);
+printf("Resultado: %d\n", FAT);
 return FAT;
 }
 
@@ -381,7 +383,7 @@ int main(){
     res = fatorial(n);
     res1 = somaDigitos(res);
 
-    printf(" O fatorial de %d eh %d e a soma de seus algarismos eh %d", n, res, res1);
+    printf("O fatorial de %d: %d\nA soma de seus algarismos: %d", n, res, res1);
 
     return 0;
 }
