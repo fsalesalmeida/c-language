@@ -8,12 +8,12 @@
 *****************************************************************************
 OBS.: Todos os programa devem ser finalizados pelo usuario.
 
-1 - Faça um programa receba dois números inteiros e execute as seguintes funções:
-    - Verificar se o número digitado é positivo ou negativo. Sendo que o valor de
-      retorno será 1 se positivo, 0 se negativo ou -1 se for igual a 0.
-    - Se os 2 números são positivos, retorne a soma dos N números existentes entre
+1 - FaÃ§a um programa receba dois nÃºmeros inteiros e execute as seguintes funÃ§Ãµes:
+    - Verificar se o nÃºmero digitado Ã© positivo ou negativo. Sendo que o valor de
+      retorno serÃ¡ 1 se positivo, 0 se negativo ou -1 se for igual a 0.
+    - Se os 2 nÃºmeros sÃ£o positivos, retorne a soma dos N nÃºmeros existentes entre
       eles.
-    - Se os 2 números são negativos, retorne a multiplicação dos N números existente
+    - Se os 2 nÃºmeros sÃ£o negativos, retorne a multiplicaÃ§Ã£o dos N nÃºmeros existente
       entre eles.
 */
 
@@ -178,7 +178,7 @@ int find_index(int a[], int num_elements, char valor)
 
 #ifdef ex03 // OK!
 
-//declaração
+//declaraÃ§Ã£o
 int soma(int x, int y);
 int subt(int x, int y);
 int multi(int x, int y);
@@ -200,7 +200,7 @@ main() {
         }
     }while(1==1);
 }
-//Funções
+//FunÃ§Ãµes
 int soma(int x, int y) {
     return x + y;
 }
@@ -338,10 +338,10 @@ double res = 0, i;
 
 /*
 
-5 - Escreva um programa que receba um numero N. Escreva uma função que
+5 - Escreva um programa que receba um numero N. Escreva uma funÃ§Ã£o que
     retorne a soma dos algarismos de N!. O resultado deve ser mostrado na funcao
     main().
-    Ex: se N = 4, N! = 24. Logo, a soma de seus algarismos ´e 2 + 4 = 6.
+    Ex: se N = 4, N! = 24. Logo, a soma de seus algarismos Â´e 2 + 4 = 6.
 
 */
 #ifdef ex05
