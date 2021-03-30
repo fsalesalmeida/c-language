@@ -10,12 +10,14 @@ FILE *arquivo;
 void WriteFile();
 void ReadFile();
 
+void msgVoltaMenu();
+
 void CreateProduct();
 void FindAllProducts();
 void FindByName();
 void FindByFirstLetter();
-void AlterProduct();
-void DeleteByName();
+void UpdateProduct();
+void DeleteProduct();
 
 void main() {
     short menu;
@@ -31,7 +33,7 @@ void main() {
         printf("4 – Pesquisa os produtos pela 1ª Letra e mostra todos na tela\n");
         printf("5 – Altera dados com pesquisa pelo produto com o nome completo\n");
         printf("6 – Exclui dados com pesquisa pelo produto com o nome completo\n");
-        printf("7 - Sair\n");
+        printf("7 - Saida\n");
         printf("\nDigite sua opção: ");
         scanf("%d", &menu);
         system("cls");
@@ -54,13 +56,11 @@ void main() {
                 break;
 
             case 5:
-                getch();
-                exit(0);
+                UpdateProduct();
                 break;
 
             case 6:
-                getch();
-                exit(0);
+                DeleteProduct();
                 break;
 
             case 7:
@@ -97,6 +97,11 @@ void ReadFile(){
 
 }
 
+void msgVoltaMenu() {
+    printf("\n\nPressione qualquer tecla para voltar ao menu...");
+    getch();
+}
+
 void CreateProduct() {
     printf("CADASTRO DE PRODUTOS\n");
 
@@ -119,8 +124,7 @@ void CreateProduct() {
 
     WriteFile();
 
-    printf("\n\nPressione qualquer tecla para voltar ao menu...");
-    getch();
+    msgVoltaMenu();
 }
 
 void FindAllProducts() {
@@ -134,8 +138,7 @@ void FindAllProducts() {
 
     fclose(arquivo);
 
-    printf("Pressione qualquer tecla para voltar ao menu...");
-    getch();
+    msgVoltaMenu();
 }
 
 void FindByName() {
@@ -159,7 +162,6 @@ void FindByName() {
 
         if(search_produto[j] == '\0' && produto[i][j] == '\0'){
             printf("\nNome: %s\nQuantidade: %d\n", produto[i], quantidade[i]);
-            fclose(arquivo);
         }
         else{
             cont++;
@@ -168,8 +170,10 @@ void FindByName() {
     if(cont == 3){
         printf("\nNenhum produto com o nome digitado foi encontrado!\n");
     }
-    printf("\nPressione qualquer tecla para voltar ao menu...");
-    getch();
+
+    fclose(arquivo);
+
+    msgVoltaMenu();
 
 }
 
@@ -196,6 +200,18 @@ void FindByFirstLetter() {
 
     fclose(arquivo);
 
-    printf("\nPressione qualquer tecla para voltar ao menu...");
-    getch();
+    msgVoltaMenu();
+
+}
+
+void UpdateProduct() {
+    printf("Under development...\n");
+
+    msgVoltaMenu();
+}
+
+void DeleteProduct() {
+    printf("Under development...\n");
+
+    msgVoltaMenu();
 }
