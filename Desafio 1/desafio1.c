@@ -81,7 +81,6 @@ void WriteFile(){
     fwrite(&produto, sizeof(produto), 1, arquivo);
     fwrite(&quantidade, sizeof(quantidade), 1, arquivo);
 
-    fclose(arquivo);
 }
 
 void ReadFile(){
@@ -98,6 +97,8 @@ void ReadFile(){
 }
 
 void msgVoltaMenu() {
+    fclose(arquivo);
+
     printf("\n\nPressione qualquer tecla para voltar ao menu...");
     getch();
 }
@@ -129,14 +130,13 @@ void CreateProduct() {
 
 void FindAllProducts() {
     ReadFile();
+
     printf("LISTA DE PRODUTOS SALVOS NO ARQUIVO\n\n");
 
     for (int i = 0; i < 3; i++){
         printf("Produto %d: %s\n", i+1, produto[i]);
         printf("Quantidade do Produto %d: %d\n\n", i+1, quantidade[i]);
     }
-
-    fclose(arquivo);
 
     msgVoltaMenu();
 }
@@ -162,16 +162,13 @@ void FindByName() {
 
         if(search_produto[j] == '\0' && produto[i][j] == '\0'){
             printf("\nNome: %s\nQuantidade: %d\n", produto[i], quantidade[i]);
-        }
-        else{
             cont++;
         }
+
     }
-    if(cont == 3){
+    if(cont == 0){
         printf("\nNenhum produto com o nome digitado foi encontrado!\n");
     }
-
-    fclose(arquivo);
 
     msgVoltaMenu();
 
@@ -197,8 +194,6 @@ void FindByFirstLetter() {
     if(cont == 0) {
         printf("\nNenhum produto com a letra digitada foi encontrado!\n\n");
     }
-
-    fclose(arquivo);
 
     msgVoltaMenu();
 
