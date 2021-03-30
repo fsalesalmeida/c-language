@@ -10,8 +10,6 @@ FILE *arquivo;
 void WriteFile();
 void ReadFile();
 
-void msgVoltaMenu();
-
 void CreateProduct();
 void FindAllProducts();
 void FindByName();
@@ -25,8 +23,7 @@ void main() {
     setlocale(LC_ALL, "portuguese");
 
     do{
-        system("cls");
-        printf("============= DESAFIO 01 - BEATRIZ, FABIO E JOAO =============\n\n");
+        printf("\n============= DESAFIO 01 - BEATRIZ, FABIO E JOAO =============\n\n");
         printf("1 – Entrada de dados\n");
         printf("2 – Lista todos os dados na tela\n");
         printf("3 – Pesquisa um produto com o nome completo e mostra na tela\n");
@@ -36,7 +33,6 @@ void main() {
         printf("7 - Saida\n");
         printf("\nDigite sua opção: ");
         scanf("%d", &menu);
-        system("cls");
 
         switch(menu){
             case 1:
@@ -64,10 +60,10 @@ void main() {
                 break;
 
             case 7:
-                printf("Obrigado! Pressione qualquer tecla para sair...");
-                getch();
                 exit(0);
-                break;
+
+            default:
+                printf("\n============= Opção Inválida - Escolha de 1 a 7! =============\n\n");
 
         }
 
@@ -81,6 +77,7 @@ void WriteFile(){
     fwrite(&produto, sizeof(produto), 1, arquivo);
     fwrite(&quantidade, sizeof(quantidade), 1, arquivo);
 
+    fclose(arquivo);
 }
 
 void ReadFile(){
@@ -96,15 +93,8 @@ void ReadFile(){
 
 }
 
-void msgVoltaMenu() {
-    fclose(arquivo);
-
-    printf("\n\nPressione qualquer tecla para voltar ao menu...");
-    getch();
-}
-
 void CreateProduct() {
-    printf("CADASTRO DE PRODUTOS\n");
+    printf("\n==================== CADASTRO DE PRODUTOS ====================\n");
 
     for(int i = 0; i<3 ; i++){
         getchar();
@@ -125,27 +115,26 @@ void CreateProduct() {
 
     WriteFile();
 
-    msgVoltaMenu();
 }
 
 void FindAllProducts() {
     ReadFile();
 
-    printf("LISTA DE PRODUTOS SALVOS NO ARQUIVO\n\n");
+    printf("\n============= LISTA DE PRODUTOS SALVOS NO ARQUIVO =============\n\n");
 
     for (int i = 0; i < 3; i++){
         printf("Produto %d: %s\n", i+1, produto[i]);
         printf("Quantidade do Produto %d: %d\n\n", i+1, quantidade[i]);
     }
 
-    msgVoltaMenu();
+    fclose(arquivo);
 }
 
 void FindByName() {
     short i=0, j=0, cont=0;
     char search_produto[30];
 
-    printf("PESQUISA DE PRODUTOS POR NOME COMPLETO\n\n");
+    printf("\n=========== PESQUISA DE PRODUTOS POR NOME COMPLETO ===========\n\n");
     printf("Digite o nome do produto que deseja pesquisar: ");
     getchar();
     gets(search_produto);
@@ -170,7 +159,7 @@ void FindByName() {
         printf("\nNenhum produto com o nome digitado foi encontrado!\n");
     }
 
-    msgVoltaMenu();
+    fclose(arquivo);
 
 }
 
@@ -178,7 +167,7 @@ void FindByFirstLetter() {
     short i=0, cont=0;
     char search_letra;
 
-    printf("PESQUISA DE PRODUTOS PELA PRIMEIRA LETRA\n\n");
+    printf("\n=========== PESQUISA DE PRODUTOS PELA PRIMEIRA LETRA ==========\n\n");
     printf("Digite a primeira letra do produto que deseja pesquisar: ");
     getchar();
     search_letra = getchar();
@@ -195,18 +184,15 @@ void FindByFirstLetter() {
         printf("\nNenhum produto com a letra digitada foi encontrado!\n\n");
     }
 
-    msgVoltaMenu();
+    fclose(arquivo);
 
 }
 
 void UpdateProduct() {
     printf("Under development...\n");
 
-    msgVoltaMenu();
 }
 
 void DeleteProduct() {
     printf("Under development...\n");
-
-    msgVoltaMenu();
 }
