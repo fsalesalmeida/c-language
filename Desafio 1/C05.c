@@ -8,7 +8,7 @@ int quantidade[3];
 FILE *arquivo;
 
 void WriteFile();
-void ReadFile();
+int ReadFile();
 
 void CreateProduct();
 void FindAllProducts();
@@ -23,7 +23,7 @@ void main() {
     setlocale(LC_ALL, "portuguese");
 
     do{
-        printf("\n============= DESAFIO 01 - BEATRIZ, FABIO E JOAO =============\n\n");
+        printf("\n============= DESAFIO 01 - C05 - BEATRIZ, FABIO E JOAO =============\n\n");
         printf("1 – Entrada de dados\n");
         printf("2 – Lista todos os dados na tela\n");
         printf("3 – Pesquisa um produto com o nome completo e mostra na tela\n");
@@ -72,7 +72,7 @@ void main() {
 }
 
 void WriteFile(){
-    arquivo = fopen("arquivo", "w");
+    arquivo = fopen("c05", "w");
 
     fwrite(&produto, sizeof(produto), 1, arquivo);
     fwrite(&quantidade, sizeof(quantidade), 1, arquivo);
@@ -80,16 +80,18 @@ void WriteFile(){
     fclose(arquivo);
 }
 
-void ReadFile(){
-    arquivo = fopen("arquivo", "r");
+int ReadFile(){
+    arquivo = fopen("c05", "r");
 
     if(arquivo == NULL){
-        printf("\nErro de Leitura no arquivo! Arquivo inexistente!");
-        exit(1);
+        printf("\nErro de Leitura no arquivo ou Arquivo inexistente! ");
+        return(1);
     }
 
     fread(&produto, sizeof(produto), 1, arquivo);
     fread(&quantidade, sizeof(quantidade), 1, arquivo);
+
+    return(0);
 
 }
 
@@ -124,49 +126,63 @@ void CreateProduct() {
 }
 
 void FindAllProducts() {
-    ReadFile();
+    int status = ReadFile();
 
-    printf("\n============= LISTA DE PRODUTOS SALVOS NO ARQUIVO =============\n\n");
+    if (status == 0) {
 
-    for (int i = 0; i < 3; i++){
-        if(produto[i][0] != '*'){
-            printf("Produto %d: %s\n", i+1, produto[i]);
-            printf("Quantidade do Produto %d: %d\n\n", i+1, quantidade[i]);
+        printf("\n============= LISTA DE PRODUTOS SALVOS NO ARQUIVO =============\n\n");
+
+        for (int i = 0; i < 3; i++){
+            if(produto[i][0] != '*'){
+                printf("Produto %d: %s\n", i+1, produto[i]);
+                printf("Quantidade do Produto %d: %d\n\n", i+1, quantidade[i]);
+            }
         }
+
+    }
+    else {
+        printf("\nProdutos não foram cadastrados. Entre com os dados antes de consultar.\n");
     }
 
     fclose(arquivo);
 }
 
 int FindByName() {
-    int i=0, j=0, cont=0;
-    char search_produto[30];
 
-    printf("\n=========== PESQUISA DE PRODUTOS POR NOME COMPLETO ===========\n\n");
-    printf("Digite o nome do produto que deseja pesquisar: ");
-    getchar();
-    gets(search_produto);
+    int status = ReadFile();
 
-    ReadFile();
+    if (status == 0) {
 
-    for (i = 0; i < 3; i++){
+        int i=0, j=0, cont=0;
+        char search_produto[30];
 
-        for (j = 0; search_produto[j] != '\0'; j++){
-            if(search_produto[j] != produto[i][j]){
-                break;
+        printf("\n=========== PESQUISA DE PRODUTOS POR NOME COMPLETO ===========\n\n");
+        printf("Digite o nome do produto que deseja pesquisar: ");
+        getchar();
+        gets(search_produto);
+
+        for (i = 0; i < 3; i++){
+
+            for (j = 0; search_produto[j] != '\0'; j++){
+                if(search_produto[j] != produto[i][j]){
+                    break;
+                }
             }
-        }
 
-        if(search_produto[j] == '\0' && produto[i][j] == '\0' && produto[i][0] != '*'){
-            printf("\nNome: %s\nQuantidade: %d\n", produto[i], quantidade[i]);
-            cont++;
-            return i;
-        }
+            if(search_produto[j] == '\0' && produto[i][j] == '\0' && produto[i][0] != '*'){
+                printf("\nNome: %s\nQuantidade: %d\n", produto[i], quantidade[i]);
+                cont++;
+                return i;
+            }
 
+        }
+        if(cont == 0){
+            printf("\nNenhum produto com o nome digitado foi encontrado!\n");
+            return -1;
+        }
     }
-    if(cont == 0){
-        printf("\nNenhum produto com o nome digitado foi encontrado!\n");
-        return -1;
+    else {
+        printf("\nProdutos não foram cadastrados. Entre com os dados antes de consultar.\n");
     }
 
     fclose(arquivo);
@@ -174,24 +190,30 @@ int FindByName() {
 }
 
 void FindByFirstLetter() {
-    int i=0, cont=0;
-    char search_letra;
+    int status = ReadFile();
 
-    printf("\n=========== PESQUISA DE PRODUTOS PELA PRIMEIRA LETRA ==========\n\n");
-    printf("Digite a primeira letra do produto que deseja pesquisar: ");
-    getchar();
-    search_letra = getchar();
+    if (status == 0) {
 
-    ReadFile();
+        int i=0, cont=0;
+        char search_letra;
 
-    for (i = 0; i < 3; i++) {
-        if(search_letra == produto[i][0] && produto[i][0] != '*') {
-            printf("\nNome: %s\nQuantidade: %d\n", produto[i], quantidade[i]);
-            cont++;
+        printf("\n=========== PESQUISA DE PRODUTOS PELA PRIMEIRA LETRA ==========\n\n");
+        printf("Digite a primeira letra do produto que deseja pesquisar: ");
+        getchar();
+        search_letra = getchar();
+
+        for (i = 0; i < 3; i++) {
+            if(search_letra == produto[i][0] && produto[i][0] != '*') {
+                printf("\nNome: %s\nQuantidade: %d\n", produto[i], quantidade[i]);
+                cont++;
+            }
+        }
+        if(cont == 0) {
+            printf("\nNenhum produto com a letra digitada foi encontrado!\n\n");
         }
     }
-    if(cont == 0) {
-        printf("\nNenhum produto com a letra digitada foi encontrado!\n\n");
+    else {
+        printf("\nProdutos não foram cadastrados. Entre com os dados antes de consultar.\n");
     }
 
     fclose(arquivo);
@@ -205,7 +227,7 @@ void UpdateProduct() {
     if(getid != -1) {
         printf("\nO registro %d será alterado...\n",getid+1);
 
-        arquivo = fopen("arquivo","r+");
+        arquivo = fopen("c05","r+");
 
         getposicao = sizeof(produto[0]) * getid;
         fseek(arquivo, getposicao, 0);
@@ -231,6 +253,8 @@ void UpdateProduct() {
 
         fclose(arquivo);
 
+        printf("Registro alterado com sucesso!\n");
+
     }
     else{
         printf("Registro não encontrado, não é possível executar alteração\n");
@@ -244,9 +268,9 @@ void DeleteProduct() {
     int getposicao;
 
     if(getid != -1) {
-        printf("\nO registro %d será apagado...\n",getid+1);
+        printf("\nO registro %d será excluído...\n",getid+1);
 
-        arquivo = fopen("arquivo","r+");
+        arquivo = fopen("c05","r+");
 
         getposicao = sizeof(produto[0]) * getid;
         fseek(arquivo, getposicao, 0);
@@ -263,6 +287,8 @@ void DeleteProduct() {
         fwrite(produto, sizeof(produto),1,arquivo);
 
         fclose(arquivo);
+
+        printf("Registro excluído com sucesso!\n");
 
     }
     else{
