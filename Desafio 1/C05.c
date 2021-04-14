@@ -126,6 +126,7 @@ void CreateProduct() {
 }
 
 void FindAllProducts() {
+    int cont = 0;
     int status = ReadFile();
 
     if (status == 0) {
@@ -137,6 +138,12 @@ void FindAllProducts() {
                 printf("Produto %d: %s\n", i+1, produto[i]);
                 printf("Quantidade do Produto %d: %d\n\n", i+1, quantidade[i]);
             }
+            else{
+                cont++;
+            }
+        }
+        if (cont == 3) {
+            printf("Não há produtos para exibir, cadastre novos produtos.\n");
         }
 
     }
@@ -198,9 +205,13 @@ void FindByFirstLetter() {
         char search_letra;
 
         printf("\n=========== PESQUISA DE PRODUTOS PELA PRIMEIRA LETRA ==========\n\n");
-        printf("Digite a primeira letra do produto que deseja pesquisar: ");
-        getchar();
-        search_letra = getchar();
+        do{
+            printf("Digite a primeira letra do produto que deseja pesquisar: ");
+            getchar();
+            search_letra = getchar();
+            if (search_letra == '*')
+                printf("\nNome do produto não pode começar com o caracter '*' - reservado pelo sistema!\n\n");
+        }while(search_letra == '*');
 
         for (i = 0; i < 3; i++) {
             if(search_letra == produto[i][0] && produto[i][0] != '*') {

@@ -1,4 +1,4 @@
-#define ex3
+#define ex5
 #include "stdio.h"
 /*****************************************************************************
 			EXERCICIOS
@@ -55,32 +55,28 @@ main()
 #ifdef ex2
 main()
 {
-    char c;
-    short s;
-    long l;
-    int i;
-    float f;
-    double d;
-
-    printf("Digite um numero SHORT: ");
-    scanf("%d",&s);
-    printf("Digite um numero LONG: ");
-    scanf("%ld",&l);
-    printf("Digite um numero INT: ");
-    scanf("%d",&i);
-    printf("Digite um numero FLOAT: ");
-    scanf("%f",&f);
-    printf("Digite um numero DOUBLE: ");
-    scanf("%lf",&d);
-    printf("Digite um CARACTER: ");
-    scanf("%c",&c);
-    c = getchar();
-
+    short a;
+    long b;
+    int c;
+    float d;
+    double e;
+    char f;
+    printf("Digite um valor do tipo short: ");
+    scanf("%hd",&a);
+    printf("Digite um valor do tipo long: ");
+    scanf("%ld",&b);
+    printf("Digite um valor do tipo int: ");
+    scanf("%ld",&c);
+    printf("Digite um valor do tipo float: ");
+    scanf("%e",&d);
+    printf("Digite um valor do tipo double: ");
+    scanf("%e",&e);
+    printf("Digite um valor do tipo char: ");
+    scanf("%c",&f);
     printf("        10        20        30        40        50        60\n");
     printf("12345678901234567890123456789012345678901234567890123456789012345\n");
 
-    printf("%9d%19d%19d\n",s,l,i);
-    printf("%19.1f%21.0lf%18c\n",f,d,c);
+
 }
 
 #endif // ex2
@@ -92,7 +88,7 @@ main()
     Ex.: recebe 3850 segundos que converte para 1h 4min 10s.
 */
 
-#ifdef ex3
+
 main()
 {
     int h=0,m=0,s=0,a;
@@ -106,10 +102,10 @@ main()
             s=(a%60);
     }
     printf("%.0d hora\n",h);
-    printf("%.0d minuto\n",m);
-    printf("%.0d segundo\n",s);
+    printf("%.0d\ minuto\n",m);
+    printf("%.0d\ segundo\n",s);
 }
-#endif // ex3
+
 
 /*
 4 - Escreva um programa que permute o conteúdo de duas variáveis sem utilizar uma
@@ -143,6 +139,7 @@ main()
     ser decomposto. Escrever o valor lido e a relação de notas necessárias.
 */
 
+/*
 #ifdef ex5
 main()
 {
@@ -187,3 +184,4 @@ main()
 }
 
 #endif // ex5
+*/
